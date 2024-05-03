@@ -1,12 +1,18 @@
 const Payment = () => {
     const handleUPIRedirect = () => {
+        const paymentAmount = 100; // Example payment amount, you can replace it with your own logic
+        const upiId = 'example@upi'; // Example UPI ID, replace it with your own logic
+
+        // Construct the UPI URI with payment amount and UPI ID
+        const upiURI = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=MerchantName&mc=1234&tid=CUST001&tr=12345678&tn=Payment&am=${encodeURIComponent(paymentAmount)}&cu=INR`;
+
         // Check if the device is Android or iOS
         if (navigator.userAgent.match(/android/i)) {
             // For Android, directly redirect to the UPI app
-            window.location.href = 'upi://pay';
+            window.location.href = upiURI;
         } else if (navigator.userAgent.match(/(iphone|ipad|ipod)/i)) {
             // For iOS, try to open the UPI app and redirect to the App Store if not installed
-            window.location.href = 'upi://pay';
+            window.location.href = upiURI;
             setTimeout(() => {
                 // Check if the UPI app was opened successfully
                 if (document.visibilityState !== 'visible') {
