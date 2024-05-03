@@ -9,7 +9,7 @@ const Payment = () => {
         const paymentDescription = 'testing'; // Example payment description, replace it with your own logic
 
         // Construct the UPI URI with payment amount, UPI ID, and payment description
-        const upiURI = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=MerchantName&mc=1234&tid=CUST001&tr=12345678&tn=${encodeURIComponent(paymentDescription)}&am=${encodeURIComponent(amount)}&cu=INR`;
+        const upiURI = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=Testing&tn=${encodeURIComponent(paymentDescription)}&am=${encodeURIComponent(amount)}&cu=INR`;
 
         // Check if the device is Android or iOS
         if (navigator.userAgent.match(/android/i)) {
