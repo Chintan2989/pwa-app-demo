@@ -1,10 +1,15 @@
-const Payment = () => {
-    const handleUPIRedirect = () => {
-        const paymentAmount = 1; // Example payment amount, you can replace it with your own logic
-        const upiId = '9725499375@upi'; // Example UPI ID, replace it with your own logic
+import { useState } from "react";
 
-        // Construct the UPI URI with payment amount and UPI ID
-        const upiURI = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=MerchantName&mc=1234&tid=CUST001&tr=12345678&tn=Payment&am=${encodeURIComponent(paymentAmount)}&cu=INR`;
+const Payment = () => {
+    const [amount, setAmount] = useState(0)
+    const [upiId, setUpiId] = useState("")
+    const handleUPIRedirect = () => {
+// Example UPI ID, replace it with your own logic
+
+        const paymentDescription = 'testing'; // Example payment description, replace it with your own logic
+
+        // Construct the UPI URI with payment amount, UPI ID, and payment description
+        const upiURI = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=MerchantName&mc=1234&tid=CUST001&tr=12345678&tn=${encodeURIComponent(paymentDescription)}&am=${encodeURIComponent(amount)}&cu=INR`;
 
         // Check if the device is Android or iOS
         if (navigator.userAgent.match(/android/i)) {
@@ -27,7 +32,9 @@ const Payment = () => {
     }
   return (
     <div>
-        <button onClick={handleUPIRedirect}>Open UPI App</button>
+        <input type="number" placeholder="Enter amount" onChange={(e) => setAmount(e.target.value)} style={{marginTop: "10px"}}/><br />
+        <input type="string" placeholder="Enter upi id" onChange={(e) => setUpiId(e.target.value)} style={{marginTop: "10px"}}/><br />
+        <button onClick={handleUPIRedirect} style={{marginTop: "10px"}}>Pay now</button>
     </div>
   )
 }
