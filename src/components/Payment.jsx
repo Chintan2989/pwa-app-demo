@@ -1,7 +1,7 @@
 const Payment = () => {
     const handleUPIRedirect = () => {
-        const paymentAmount = 100; // Example payment amount, you can replace it with your own logic
-        const upiId = 'example@upi'; // Example UPI ID, replace it with your own logic
+        const paymentAmount = 1; // Example payment amount, you can replace it with your own logic
+        const upiId = '9725499375@upi'; // Example UPI ID, replace it with your own logic
 
         // Construct the UPI URI with payment amount and UPI ID
         const upiURI = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=MerchantName&mc=1234&tid=CUST001&tr=12345678&tn=Payment&am=${encodeURIComponent(paymentAmount)}&cu=INR`;
