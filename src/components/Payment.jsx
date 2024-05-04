@@ -1,11 +1,10 @@
+import { useState } from "react";
 
 const Payment = () => {
-    // const [amount, setAmount] = useState(0)
-    // const [upiId, setUpiId] = useState("")
+    const [amount, setAmount] = useState(0)
+    const [upiId, setUpiId] = useState("")
     const timestamp = new Date().getTime();
-
-            const amount = '100'; // Set your payment amount
-            const vpa = '9725499375@upi'; // Set the receiver's VPA
+ // Set your payment amount
             const merchantName = 'Your Merchant Name'; // Set your merchant name
             const txnId = timestamp; // Set a unique transaction ID
             const txnRef = timestamp; // Set your order ID or reference
@@ -15,7 +14,7 @@ const Payment = () => {
 
 
         // Construct the UPI URI with payment amount, UPI ID, and payment description
-        const upiURI = `upi://pay?pa=${vpa}&pn=${merchantName}&am=${amount}&tid=${txnId}&tr=${txnRef}&mc=${callbackUrl}`;
+        const upiURI = `upi://pay?pa=${upiId}&pn=${merchantName}&am=${amount}&tid=${txnId}&tr=${txnRef}&mc=${callbackUrl}`;
         // Check if the device is Android or iOS
         if (navigator.userAgent.match(/android/i)) {
             // For Android, directly redirect to the UPI app
@@ -37,8 +36,8 @@ const Payment = () => {
     }
   return (
     <div>
-        {/* <input type="number" placeholder="Enter amount" onChange={(e) => setAmount(e.target.value)} style={{marginTop: "10px"}}/><br /> */}
-        {/* <input type="string" placeholder="Enter upi id" onChange={(e) => setUpiId(e.target.value)} style={{marginTop: "10px"}}/><br /> */}
+        <input type="number" placeholder="Enter amount" onChange={(e) => setAmount(e.target.value)} style={{marginTop: "10px"}}/><br />
+        <input type="string" placeholder="Enter upi id" onChange={(e) => setUpiId(e.target.value)} style={{marginTop: "10px"}}/><br />
         <button onClick={handleUPIRedirect} style={{marginTop: "10px"}}>Pay now</button>
     </div>
   )
