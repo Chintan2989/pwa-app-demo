@@ -5,7 +5,7 @@ const Payment = () => {
     const [upiId, setUpiId] = useState("")
     const timestamp = new Date().getTime();
  // Set your payment amount
-            const merchantName = 'Your Merchant Name'; // Set your merchant name
+            const merchantName = 'Testing'; // Set your merchant name
             const txnId = timestamp; // Set a unique transaction ID
             const txnRef = timestamp; // Set your order ID or reference
             const callbackUrl = 'http://localhost:8000/user/login';
@@ -38,7 +38,7 @@ const Payment = () => {
     <div>
         <input type="number" placeholder="Enter amount" onChange={(e) => setAmount(e.target.value)} style={{marginTop: "10px"}}/><br />
         <input type="string" placeholder="Enter upi id" onChange={(e) => setUpiId(e.target.value)} style={{marginTop: "10px"}}/><br />
-        <button onClick={handleUPIRedirect} style={{marginTop: "10px"}}>Pay now</button>
+        <button onClick={handleUPIRedirect} style={{marginTop: "10px"}}>Pay</button>
     </div>
   )
 }
